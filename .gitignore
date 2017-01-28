@@ -1,0 +1,37 @@
+/** OS GENERATED FILES **/
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+.idea
+
+/** PACKAGES **/
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+/** LOGS AND DATABASES **/
+*.log
+*.sqlite
+*.js.map
+
+/** NPM **/
+pids
+logs
+results
+npm-debug.log
+
+/** DIRECTORIES **/
+node_modules/
+.sass-cache/
+jspm_packages/
+dist/
+
+/** IMAGES FILES **/
+*.psd
+*.ai
+*.bmp
