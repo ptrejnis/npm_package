@@ -25,29 +25,29 @@ let _html = {
 };
 let _styles = {
     input       : 'src/scss/styles.scss',
-    output      : 'public/css'
+    output      : 'dist/css'
 };
 let _images = {
     input       : 'src/img',
-    output      : 'public/img'
+    output      : 'dist/img'
 };
 let _fonts = {
     input       : 'src/fonts',
-    output      : 'public/fonts'
+    output      : 'dist/fonts'
 };
 let _scripts = {
     input       : 'src/js/app.js',
-    output      : 'public/js'
+    output      : 'dist/js'
 };
 
 //TASKS
 
 /* TESTING TASK */
 // gulp.task('test', () => {
-//     return glob(__dirname + '/public/pages/, function(err, files) {
+//     return glob(__dirname + '/dist/pages/, function(err, files) {
 //         console.log(files);
 //         console.log(err);
-//         console.log(__dirname + '/public');
+//         console.log(__dirname + '/dist');
 //     });
 // });
 
@@ -56,7 +56,7 @@ function handleError(err) {
     console.log("ERROR:\n\tplugin:  " + err.plugin + '\n\tmessage: ' + err.message);
 }
 
-// Task which create zip packages from public
+// Task which create zip packages from dist
 gulp.task('package', () => {
 
     let date = new Date();
@@ -73,8 +73,8 @@ gulp.task('package', () => {
         .pipe(zip('HTML_src_' + date + '.zip'))
         .pipe(gulp.dest(''));
 
-    gulp.src('public/**')
-        .pipe(zip('HTML_public_' + date + '.zip'))
+    gulp.src('dist/**')
+        .pipe(zip('HTML_dist_' + date + '.zip'))
         .pipe(gulp.dest(''));
 });
 
@@ -116,7 +116,7 @@ gulp.task('html', () => {
             prefix: '@@',
             basepath: __dirname + _html.includes
         }))
-        .pipe(gulp.dest('public/'));
+        .pipe(gulp.dest('dist/'));
 
     browserSync.reload();
 });
@@ -139,7 +139,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('clean', () => {
-    gulp.src('public/*', {
+    gulp.src('dist/*', {
             read: false
         })
         .pipe(clean({
@@ -157,7 +157,7 @@ gulp.task('connect', () => {
     return browserSync.init({
         port: 8080,
         server: {
-            baseDir: './public'
+            baseDir: './dist'
         },
         ghostMode: {
             clicks: false,
